@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダイス・クリケット 専用カウンター</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- メインカウンター画面 -->
+    <div id="counter-container">
+        <header>
+            <h1>Dice Cricket Counter</h1>
+            <div class="global-actions">
+                <button id="btn-undo" class="btn-action" disabled>↩ 1手戻す</button>
+                <button id="btn-reset" class="btn-action btn-danger">🔄 リセット</button>
+            </div>
+        </header>
+
+        <!-- スコア表示エリア -->
+        <div class="score-summary-board">
+            <div class="player-summary p1">
+                <div class="player-name">PLAYER 1</div>
+                <div id="p1-total-score" class="total-score-display">0点</div>
+            </div>
+            <div class="vs-divider">VS</div>
+            <div class="player-summary p2">
+                <div class="player-name">PLAYER 2</div>
+                <div id="p2-total-score" class="total-score-display">0点</div>
+            </div>
+        </div>
+
+        <!-- カウンターメインエリア -->
+        <div class="counter-grid-container">
+            
+            <!-- プレイヤー1のシート -->
+            <div class="player-side p1-side">
+                <div class="side-header">PLAYER 1 (赤)</div>
+                <div id="p1-rows" class="rows-container">
+                    <!-- JSで動的に生成 -->
+                </div>
+                <div id="p1-history" class="history-box"></div>
+            </div>
+
+            <!-- プレイヤー2のシート -->
+            <div class="player-side p2-side">
+                <div class="side-header">PLAYER 2 (青)</div>
+                <div id="p2-rows" class="rows-container">
+                    <!-- JSで動的に生成 -->
+                </div>
+                <div id="p2-history" class="history-box"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ゲーム終了モーダルオーバーレイ -->
+    <div id="game-over-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2>🎉 ゲーム終了 🎉</h2>
+            <p class="modal-reason">ブル以外の6つの奇数エリアがすべてクローズされました。</p>
+            <div id="winner-announcement"></div>
+            <div id="final-results"></div>
+            <button id="btn-modal-close" class="btn-primary">確認</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
